@@ -1,66 +1,65 @@
-var fs = require('fs');
-var chai = require('chai');
-var assert = chai.assert;
+/*eslint-disable*/
 
-var SnowReportSkill = require('../SnowReportSkill');
-var parseSnowReport = require('../lib/parse-alexa-input');
-var formatAlexaOutput = require('../lib/alexa-output-utility');
-var INTENTS = require('../lib/parse-alexa-input').INTENTS;
+const fs = require('fs');
+const chai = require('chai');
+const assert = chai.assert;
 
-var successfulSnowReportFetcher;
-var unsuccessfulSnowReportFetcher;
-var currentConditionsIntentParser;
+const SnowReportSkill = require('../SnowReportSkill');
+const parseSnowReport = require('../lib/parse-alexa-input');
+const formatAlexaOutput = require('../lib/alexa-output-utility');
+const INTENTS = require('../lib/parse-alexa-input').INTENTS;
 
-beforeEach(function() {
+let successfulSnowReportFetcher;
+let unsuccessfulSnowReportFetcher;
+let currentConditionsIntentParser;
 
-  currentConditionsIntentParser = function() {
+beforeEach(() => {
+  currentConditionsIntentParser = function () {
     return {
-      requestedIntent: INTENTS.CURRENT_CONDITIONS_INTENT
-    }
+      requestedIntent: INTENTS.CURRENT_CONDITIONS_INTENT,
+    };
   };
 
-  successfulSnowReportFetcher = (function() {
-    var snowReport = fs.readFileSync('./test-data/snow-report-snowfall.json', 'utf-8');
+  successfulSnowReportFetcher = (function () {
+    const snowReport = fs.readFileSync('./test-data/snow-report-snowfall.json', 'utf-8');
 
-    return function(callback) {
+    return function (callback) {
       callback(null, snowReport);
     };
   }());
 
-  unsuccessfulSnowReportFetcher = (function() {
-    var snowReport = fs.readFileSync('./test-data/snow-report-snowfall.json', 'utf-8');
+  unsuccessfulSnowReportFetcher = (function () {
+    const snowReport = fs.readFileSync('./test-data/snow-report-snowfall.json', 'utf-8');
 
-    return function(callback) {
+    return function (callback) {
       callback(null, snowReport);
     };
   }());
 });
 
 
-describe.skip('given a current condition request intent and an expected snow report', function(done) {
-    var skill;
-    beforeEach(function() {
-        skill = Object.assign({}, SnowReportSkill,
-          {
-            fetchSnowReport: successfulSnowReportFetcher,
-            parseAlexaInput: currentConditionsIntentParser,
-            formatAlexaOutput: formatAlexaOutput
-          });
+describe.skip('given a current condition request intent and an expected snow report', (done) => {
+  let skill;
+  beforeEach(() => {
+    skill = Object.assign({}, SnowReportSkill,
+      {
+        fetchSnowReport: successfulSnowReportFetcher,
+        parseAlexaInput: currentConditionsIntentParser,
+        formatAlexaOutput,
+      });
+  });
+
+  it('outputs short description', () => {
+    skill.respondToUserRequest({}, (error, output) => {
+      console.log(error);
+      console.log(output);
+
+      assert.notOk(output);
+      assert.ok(output);
+      assert.property('reponse.outputSpeech.text', output);
+      assert.typeOf(output.reponse.outputSpeech.text, 'string');
+
+      done();
     });
-
-    it('outputs short description', function() {
-
-       skill.respondToUserRequest({}, function(error, output) {
-         console.log(error);
-         console.log(output);
-
-        assert.notOk(output);
-          assert.ok(output);
-          assert.property('reponse.outputSpeech.text', output);
-          assert.typeOf(output.reponse.outputSpeech.text, 'string');
-
-          done();
-        });
-
-    });
+  });
 });

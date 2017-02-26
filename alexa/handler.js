@@ -1,10 +1,8 @@
-'use strict';
-
-import handlerMap from './lib/handler-router';
 import Alexa from 'alexa-sdk';
+import handlerMap from './lib/handler-router';
 
-module.exports.stevensSnowReport = function(event, context, callback) {
-  var alexa = Alexa.handler(event, context);
+export default function stevensSnowReport(event, context) {
+  const alexa = Alexa.handler(event, context);
   alexa.registerHandlers(handlerMap);
   alexa.execute();
-};
+}

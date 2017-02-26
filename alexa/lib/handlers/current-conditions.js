@@ -1,52 +1,52 @@
 function _transformInchMeasurement(inchValue) {
-    if (inchValue === 1) {
-        return `${inchValue} inch`;
-    }
-    return `${inchValue} inches`;
+  if (inchValue === 1) {
+    return `${inchValue} inch`;
+  }
+  return `${inchValue} inches`;
 }
 
 function _transformSnowAccumulation(snowReport) {
-    var snowAccumulation = snowReport.snowAccumulation;
+  const snowAccumulation = snowReport.snowAccumulation;
 
-    if (snowAccumulation.snowFallOver48Hours < 1) {
-        return `There has been no new snowfall in the last 2 days.`;
-    }
+  if (snowAccumulation.snowFallOver48Hours < 1) {
+    return 'There has been no new snowfall in the last 2 days.';
+  }
 
-    return `It snowed ${_transformInchMeasurement(snowAccumulation.overnightAmount)} last night, and ${_transformInchMeasurement(snowAccumulation.snowFallOver48Hours)} over the last 2 days.`;
+  return `It snowed ${_transformInchMeasurement(snowAccumulation.overnightAmount)} last night, and ${_transformInchMeasurement(snowAccumulation.snowFallOver48Hours)} over the last 2 days.`;
 }
 
 function _transformGroomConditions(snowReport) {
-  const {groomed, nonGroomed} = snowReport.groomedConditions;
+  const { groomed, nonGroomed } = snowReport.groomedConditions;
 
-  return `Expect ${groomed} and ${nonGroomed} ski conditions.`
+  return `Expect ${groomed} and ${nonGroomed} ski conditions.`;
 }
 
-function _transformBaseConditions(snowReport, options) {
-    const baseConditions = snowReport.conditions.base;
+function _transformBaseConditions(snowReport) {
+  const baseConditions = snowReport.conditions.base;
 
-    const {description, temperature, wind, visibility} = baseConditions;
+  const { description, temperature, wind, visibility } = baseConditions;
 
-    return `It is ${temperature.farenheit} degrees and ${description} at the base, with ${windAdjective} wind and ${visibilityAdjective} visibility.`;
+  return `It is ${temperature.farenheit} degrees and ${description} at the base, with ${wind} wind and ${visibility} visibility.`;
 }
 
-function _transformTopConditions(snowReport, options) {
-    var baseConditions = snowReport.conditions.base;
+/* function _transformTopConditions(snowReport) {
+  const baseConditions = snowReport.conditions.base;
 
-    var description = baseConditions.description;
-    var temperature = baseConditions.temperature.farenheit;
-    var windAdjective = baseConditions.wind;
-    var visibilityAdjective = baseConditions.visibility;
+  const description = baseConditions.description;
+  const temperature = baseConditions.temperature.farenheit;
+  const windAdjective = baseConditions.wind;
+  const visibilityAdjective = baseConditions.visibility;
 
-    return `It is ${temperature} degrees and ${description} up top, with ${windAdjective} wind and ${visibilityAdjective} visibility.`;
+  return `It is ${temperature} degrees and ${description} up top,
+   with ${windAdjective} wind and ${visibilityAdjective} visibility.`;
+} */
+
+function _handleCurrentConditionsIntent(snowReport) {
+  return `${_transformBaseConditions(snowReport)} ${_transformSnowAccumulation(snowReport)} ${_transformGroomConditions(snowReport)}`;
 }
 
-function _handleCurrentConditionsIntent(snowReport, options) {
-    return `${_transformBaseConditions(snowReport)} ${_transformSnowAccumulation(snowReport)} ${_transformGroomConditions(snowReport)}`
-}
-
-export default function createCurrentConditionsIntentHandler({fetchSnowReport, logger}) {
-
-  return function () {
+export default function createCurrentConditionsIntentHandler({ fetchSnowReport }) {
+  return function handleCurrentConditions() {
     fetchSnowReport((err, snowReport) => {
       if (err) {
         this.emit(':tell', 'Unable to fetch snow report');
@@ -55,5 +55,5 @@ export default function createCurrentConditionsIntentHandler({fetchSnowReport, l
       const stringResponse = _handleCurrentConditionsIntent(snowReport);
       this.emit(':tell', stringResponse);
     });
-  }
+  };
 }

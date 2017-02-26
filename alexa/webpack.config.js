@@ -1,6 +1,5 @@
 // webpack.config.js
-var path = require('path');
-var nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: './handler.js',
@@ -12,15 +11,23 @@ module.exports = {
     filename: 'handler.js', // this should match the first part of function handler in serverless.yml
   },
   module: {
-   loaders: [{
-     test: /\.js$/,
-     loaders: ['babel'],
-     exclude: /node_modules/,
-   },
-   {
-     test: /\.json$/,
-     loader: "json-loader",
-     exclude: /node_modules/,
-   }]
- }
+    preLoaders: [// Javascript
+      {
+        test: /\.js?$/,
+        loader: 'eslint',
+        exclude: /node_modules/,
+      },
+    ],
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        exclude: /node_modules/,
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };

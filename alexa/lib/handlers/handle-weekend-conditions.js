@@ -1,4 +1,4 @@
-function handleWeekendConditionsIntent(snowReport, options) {
+function handleWeekendConditionsIntent() {
 
 }
 

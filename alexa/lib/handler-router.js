@@ -2,10 +2,10 @@ import { INTENTS } from './parse-alexa-input';
 import createCurrentConditionsIntentHandler from './handlers/current-conditions';
 import fetchSnowReport from './snow-report-fetcher';
 
-var handlers = {};
+const handlers = {};
 
 handlers[INTENTS.CURRENT_CONDITIONS_INTENT] = createCurrentConditionsIntentHandler({
-  fetchSnowReport
+  fetchSnowReport,
 });
 
 module.exports = handlers;

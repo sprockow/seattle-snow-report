@@ -1,69 +1,67 @@
-var parseAlexaInput = require('../lib/parse-alexa-input');
+/*eslint-disable*/
 
-var chai = require('chai');
+const parseAlexaInput = require('../lib/parse-alexa-input');
+
+const chai = require('chai');
 var assert = require('assert');
-var fs = require('fs');
+const fs = require('fs');
 
 var assert = chai.assert;
 
-describe.skip('parses current conditons intent request', function() {
+describe.skip('parses current conditons intent request', () => {
+  const alexaInput = JSON.parse(fs.readFileSync('./test-data/current-conditions-intent-request.json', 'utf-8'));
 
-    var alexaInput = JSON.parse(fs.readFileSync('./test-data/current-conditions-intent-request.json', 'utf-8'));
+  const parsedInput = parseAlexaInput(alexaInput);
 
-    var parsedInput = parseAlexaInput(alexaInput);
-
-    it('outputs expected schema', function() {
-      assert.typeOf(parsedInput, 'object');
-      assert.typeOf(parsedInput.requestedIntent, 'string');
-    });
-    it('outputs expected intent', function() {
-        assert.equal(parsedInput.requestedIntent, 'CurrentConditions');
-    })
+  it('outputs expected schema', () => {
+    assert.typeOf(parsedInput, 'object');
+    assert.typeOf(parsedInput.requestedIntent, 'string');
+  });
+  it('outputs expected intent', () => {
+    assert.equal(parsedInput.requestedIntent, 'CurrentConditions');
+  });
 });
 
-describe.skip('parses weekend conditons intent request', function() {
+describe.skip('parses weekend conditons intent request', () => {
+  const alexaInput = JSON.parse(fs.readFileSync('./test-data/weekend-conditions-intent-request.json', 'utf-8'));
 
-    var alexaInput = JSON.parse(fs.readFileSync('./test-data/weekend-conditions-intent-request.json', 'utf-8'));
+  const parsedInput = parseAlexaInput(alexaInput);
 
-    var parsedInput = parseAlexaInput(alexaInput);
-
-    it('outputs expected schema', function() {
-      assert.typeOf(parsedInput, 'object');
-      assert.typeOf(parsedInput.requestedIntent, 'string');
-    });
-    it('outputs expected intent', function() {
-        assert.equal(parsedInput.requestedIntent, 'WeekendConditions');
-    })
+  it('outputs expected schema', () => {
+    assert.typeOf(parsedInput, 'object');
+    assert.typeOf(parsedInput.requestedIntent, 'string');
+  });
+  it('outputs expected intent', () => {
+    assert.equal(parsedInput.requestedIntent, 'WeekendConditions');
+  });
 });
 
-describe('parses forecast intent request', function() {
+describe('parses forecast intent request', () => {
+  const alexaInput = JSON.parse(fs.readFileSync('./test-data/forecast-intent-request.json', 'utf-8'));
 
-    var alexaInput = JSON.parse(fs.readFileSync('./test-data/forecast-intent-request.json', 'utf-8'));
+  const parsedInput = parseAlexaInput(alexaInput);
 
-    var parsedInput = parseAlexaInput(alexaInput);
-
-    it('outputs expected schema', function() {
-      assert.typeOf(parsedInput, 'object');
-        assert.typeOf(parsedInput.requestedIntent, 'string');
-    });
-    it('outputs expected intent', function() {
-      assert.equal(parsedInput.requestedIntent, 'Forecast');
-    })
+  it('outputs expected schema', () => {
+    assert.typeOf(parsedInput, 'object');
+    assert.typeOf(parsedInput.requestedIntent, 'string');
+  });
+  it('outputs expected intent', () => {
+    assert.equal(parsedInput.requestedIntent, 'Forecast');
+  });
 });
 
-describe('parses unknown intent request', function() {
+describe('parses unknown intent request', () => {
+  const alexaInput = {
+    request: {
+      intent: {
+        name: 'UnknownIntent',
+      },
+    },
+  };
 
-    var alexaInput = {
-      request: {
-        intent: {
-          name: 'UnknownIntent'
-        }
-      }
-    };
-
-    it('throws an exception', function() {
-        chai.expect(function() {
-          parseAlexaInput(alexaInput)
-        }).to.throw('Unknown intent: UnknownIntent');
-    });
+  it('throws an exception', () => {
+    chai.expect(() => {
+      parseAlexaInput(alexaInput);
+    }).to.throw('Unknown intent: UnknownIntent');
+  });
 });
