@@ -1,0 +1,93 @@
+{
+    "lastUpdatedAt": "2017-01-04T22:51:00.000Z",
+    "description": "Today is going to be all about sunshine, cold temperatures, smooth groomers, and epic views. You will want to follow the sun on days like this. Start off on the backside, work your way over to Hogsback and Skyline later in the morning, and head over to Kehr's Chair in the afternoon. Bring an extra layer and a scarf or facemask, and enjoy that fresh air. We will be open until 10pm, conditions permitting. See you out there!",
+    "snowAccumulation": {
+        "overnightAmount": 0,
+        "snowFallOver24Hours": 0,
+        "snowFallOver48Hours": 0
+    },
+    "conditions": {
+        "base": {
+            "description": "Clear",
+            "temperature": {
+                "celsius": -8,
+                "farenheit": 17
+            },
+            "wind": "Light",
+            "visibility": "Good"
+        },
+        "top": {
+            "description": "Clear",
+            "temperature": {
+                "celsius": -11,
+                "farenheit": 12
+            },
+            "wind": "Light to Moderate",
+            "visibility": "Good"
+        }
+    },
+    "forecasts": [{
+        "day": "Thursday",
+        "summary": "sunny",
+        "description": "Mostly sunny, with a high near 20. Southeast wind 5 to 8 mph becoming calm.",
+        "isTentative": false,
+        "isNight": false,
+        "temperature": {
+            "farenheit": 20
+        }
+    }, {
+        "day": "Thursday Night",
+        "summary": "sunny",
+        "description": "Partly cloudy, with a steady temperature around 15. South southwest wind around 7 mph.",
+        "isTentative": false,
+        "isNight": true,
+        "temperature": {
+            "farenheit": 15
+        }
+    }, {
+        "day": "Friday",
+        "summary": "partly_cloudy",
+        "description": "Partly sunny, with a high near 21. East wind 3 to 8 mph.",
+        "isTentative": false,
+        "isNight": false,
+        "temperature": {
+            "farenheit": 21
+        }
+    }, {
+        "day": "Friday Night",
+        "summary": "partly_cloudy",
+        "description": "",
+        "isTentative": true,
+        "isNight": true,
+        "temperature": {
+            "farenheit": 13
+        }
+    }, {
+        "day": "Saturday",
+        "summary": "snowy",
+        "description": "",
+        "isTentative": true,
+        "isNight": false,
+        "temperature": {
+            "farenheit": 19
+        }
+    }, {
+        "day": "Saturday Night",
+        "summary": "snowy",
+        "description": "",
+        "isTentative": true,
+        "isNight": true,
+        "temperature": {
+            "farenheit": 16
+        }
+    }],
+    "snowDepths": {
+        "base": 66,
+        "top": 77,
+        "season": 201
+    },
+    "groomedConditions": {
+        "groomed": "Machine Groomed",
+        "nonGroomed": "Packed Powder"
+    }
+}

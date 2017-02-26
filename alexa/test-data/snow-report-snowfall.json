@@ -1,0 +1,93 @@
+{
+    "lastUpdatedAt": "2016-12-15T21:28:00.000Z",
+    "description": "We had big smiles while riding down some amazing groomers yesterday from the cold temperature keeping all the new snow that we have gotten over the past week nice and playful. The sun was replaced by clouds later in the day but that didn't stop people from finding some leftover pow pockets. For today we are expecting it to be mostly cloudy with the sun occasionally peaking out to give us some relief from the cold temperatures. The groomed runs are going to be amazing today which in turn means the terrain park is going to be firing on all cylinders. See you on the hill!\n\nEarly season conditions still exist, so please ski and board with caution.",
+    "snowAccumulation": {
+        "overnightAmount": 2,
+        "snowFallOver24Hours": 4,
+        "snowFallOver48Hours": 6
+    },
+    "conditions": {
+        "base": {
+            "description": "Overcast",
+            "temperature": {
+                "celsius": -8,
+                "farenheit": 18
+            },
+            "wind": "Calm",
+            "visibility": "Good"
+        },
+        "top": {
+            "description": "Overcast",
+            "temperature": {
+                "celsius": -10,
+                "farenheit": 14
+            },
+            "wind": "Calm",
+            "visibility": "Good"
+        }
+    },
+    "forecasts": [{
+        "day": "Friday",
+        "summary": "sunny",
+        "description": "Mostly sunny, with a high near 15. East southeast wind 5 to 7 mph becoming light and variable  in the afternoon.",
+        "isTentative": false,
+        "isNight": false,
+        "temperature": {
+            "farenheit": 15
+        }
+    }, {
+        "day": "Friday Night",
+        "summary": "sunny",
+        "description": "Partly cloudy, with a low around -3. Southeast wind around 7 mph becoming south southwest after midnight.",
+        "isTentative": false,
+        "isNight": true,
+        "temperature": {
+            "farenheit": -3
+        }
+    }, {
+        "day": "Saturday",
+        "summary": "snowy",
+        "description": "A slight chance of snow showers between 10am and 4pm, then a slight chance of snow after 4pm.  Partly sunny, with a high near 16. West southwest wind 5 to 7 mph.  Chance of precipitation is 20%.",
+        "isTentative": false,
+        "isNight": false,
+        "temperature": {
+            "farenheit": 16
+        }
+    }, {
+        "day": "Saturday Night",
+        "summary": "snowy",
+        "description": "",
+        "isTentative": true,
+        "isNight": true,
+        "temperature": {
+            "farenheit": 13
+        }
+    }, {
+        "day": "Sunday",
+        "summary": "snowy",
+        "description": "",
+        "isTentative": true,
+        "isNight": false,
+        "temperature": {
+            "farenheit": 25
+        }
+    }, {
+        "day": "Sunday Night",
+        "summary": "snowy",
+        "description": "",
+        "isTentative": true,
+        "isNight": true,
+        "temperature": {
+            "farenheit": 25
+        }
+    }],
+    "snowDepths": {
+        "base": 47,
+        "top": 57,
+        "season": 120
+    },
+    "groomedConditions": {
+        "groomed": "Machine Groomed",
+        "nonGroomed": "Packed Powder"
+    }
+}

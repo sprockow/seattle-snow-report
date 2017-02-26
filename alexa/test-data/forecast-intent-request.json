@@ -1,0 +1,24 @@
+{
+  "session": {
+    "sessionId": "SessionId.31221a0f-94eb-4b88-a4e6-cbd8a808c17c",
+    "application": {
+      "applicationId": "amzn1.ask.skill.a697e182-900e-4d40-befc-1d2dade6be5e"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AG4BGBTHIOYCNVM6YVWUCNCSIZLVM2BLQF2DIPXVCY4RUEDTIVGCCEWRDPCCTZFWWNK76EX3JZBYBNJIEPKCRYXSIWIFIIVFSEQP3GFNYWGAL3CPWKE2BANBPDN6BXUMMLZNZUYLPMIZFMZF7M6AD4GJ476GWWCKTH65G3U3EXRY3TZQLLQJD62B5XKPWXFD67YFF2LVDO7AP4Q"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.fb2ce56d-19b0-457a-b333-4b11e852282e",
+    "locale": "en-US",
+    "timestamp": "2017-01-29T06:45:06Z",
+    "intent": {
+      "name": "Forecast",
+      "slots": {}
+    }
+  },
+  "version": "1.0"
+}

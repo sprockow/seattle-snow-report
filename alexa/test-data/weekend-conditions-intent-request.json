@@ -1,0 +1,24 @@
+{
+  "session": {
+    "sessionId": "SessionId.90e463d3-87e6-4656-b201-2498bbe0c407",
+    "application": {
+      "applicationId": "amzn1.ask.skill.a697e182-900e-4d40-befc-1d2dade6be5e"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AG4BGBTHIOYCNVM6YVWUCNCSIZLVM2BLQF2DIPXVCY4RUEDTIVGCCEWRDPCCTZFWWNK76EX3JZBYBNJIEPKCRYXSIWIFIIVFSEQP3GFNYWGAL3CPWKE2BANBPDN6BXUMMLZNZUYLPMIZFMZF7M6AD4GJ476GWWCKTH65G3U3EXRY3TZQLLQJD62B5XKPWXFD67YFF2LVDO7AP4Q"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.645e730e-fda6-4d67-ac69-8eb7d4ea8500",
+    "locale": "en-US",
+    "timestamp": "2017-01-29T06:35:03Z",
+    "intent": {
+      "name": "WeekendConditions",
+      "slots": {}
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "web-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eyes": "^0.1.8",
+    "minimist": "^1.2.0",
+    "mocha": "^3.2.0",
+    "moment": "^2.17.1"
+  }
+}

@@ -1,0 +1,61 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: web-scraper
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: us-west-2
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+        - "s3:GetObject"
+      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", "*" ] ]  }
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+package:
+    individually: true
+
+functions:
+  scraper:
+    handler: handler.scraper
+    memorySize: 128 # memorySize for this specific function.
+    timeout: 8
+    events:
+      - schedule: rate(15 minutes)
+
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+    SnowReportBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: "snow-report"
+        AccessControl: PublicRead
+  Outputs:
+     SnowReportBucket:
+       Description: "Snow report bucket"
+       Value:
+           -Domain !GetAtt SnowReportBucket.DomainName
