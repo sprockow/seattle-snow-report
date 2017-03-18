@@ -28,14 +28,6 @@ module.exports.scraper = function(event, context, callback) {
       }
       console.log('fetched snow report', (new Date()).getTime() - startTime);
 
-      archiveSnowReport(body, new Date(), function(error) {
-          // we don't need to fail on this
-          if (error) {
-              // TODO output known error message
-            console.error(error);
-          }
-      });
-
       var snowReport;
       try {
         snowReport = snowReportParser.parseDocument(body);
@@ -50,8 +42,27 @@ module.exports.scraper = function(event, context, callback) {
           if (error) {
               var wrappedError = new Error(`Failed to publish snow-report. ${error.message}`);
               wrappedError.stack = wrappedError.stack.concat(error.stack);
-              return callback(wrappedError);
+
+              archiveSnowReport(body, new Date(), function(error) {
+                  // we don't need to fail on this
+                  if (error) {
+                      // TODO output known error message
+                    console.error(error);
+                  }
+
+                  return callback(wrappedError);
+              });
           }
+
+          archiveSnowReport(body, snowReport.lastUpdatedAt, function(error) {
+              // we don't need to fail on this
+              if (error) {
+                  // TODO output known error message
+                console.error(error);
+              }
+
+              callback(error, snowReport);
+          });
 
           console.log('published snow report', (new Date()).getTime() - startTime);
           callback(error, snowReport);
