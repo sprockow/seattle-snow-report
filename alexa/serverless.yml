@@ -34,6 +34,6 @@ package:
 
 functions:
   stevensSnowReportSkill:
-    handler: handler.seattleSnowReport
+    handler: handler.seattleSkiReport
     events:
         - alexaSkillsKit
